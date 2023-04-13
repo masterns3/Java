@@ -1,0 +1,57 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class GameScore extends JFrame implements ActionListener {
+
+    private JButton startButton;
+    private JLabel scoreLabel;
+    private int score;
+
+    public GameScore() {
+        setTitle("Game Score");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(2, 1));
+
+        startButton = new JButton("Start");
+        startButton.addActionListener(this);
+        add(startButton);
+
+        scoreLabel = new JLabel("Score: 0", SwingConstants.CENTER);
+        add(scoreLabel);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == startButton) {
+            startGame();
+        }
+    }
+
+    private void startGame() {
+        score = 0;
+        scoreLabel.setText("Score: " + score);
+        startButton.setEnabled(false);
+
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                score++;
+                scoreLabel.setText("Score: " + score);
+            }
+        });
+        timer.setRepeats(true);
+        timer.start();
+
+        JOptionPane.showMessageDialog(this, "Click OK to stop the game.");
+        timer.stop();
+        startButton.setEnabled(true);
+    }
+
+    public static void main(String[] args) {
+        GameScore game = new GameScore();
+        game.setVisible(true);
+    }
+}
