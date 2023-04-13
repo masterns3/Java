@@ -1,0 +1,77 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class AdvancedGUI extends JFrame {
+    private JPanel panel;
+    private JLabel label1, label2;
+    private JTextField textField1, textField2;
+    private JButton addButton, subtractButton, multiplyButton, divideButton;
+
+    public AdvancedGUI() {
+        setTitle("Calculator");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 300);
+        setResizable(false);
+
+        panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+
+        GridBagConstraints c = new GridBagConstraints();
+
+        label1 = new JLabel("Enter first number:");
+        c.gridx = 0;
+        c.gridy = 0;
+        c.insets = new Insets(5, 5, 5, 5);
+        panel.add(label1, c);
+
+        textField1 = new JTextField(10);
+        c.gridx = 1;
+        c.gridy = 0;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        panel.add(textField1, c);
+
+        label2 = new JLabel("Enter second number:");
+        c.gridx = 0;
+        c.gridy = 1;
+        c.insets = new Insets(5, 5, 5, 5);
+        panel.add(label2, c);
+
+        textField2 = new JTextField(10);
+        c.gridx = 1;
+        c.gridy = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        panel.add(textField2, c);
+
+        addButton = new JButton("+");
+        c.gridx = 0;
+        c.gridy = 2;
+        c.insets = new Insets(5, 5, 5, 5);
+        panel.add(addButton, c);
+
+        subtractButton = new JButton("-");
+        c.gridx = 1;
+        c.gridy = 2;
+        c.insets = new Insets(5, 5, 5, 5);
+        panel.add(subtractButton, c);
+
+        multiplyButton = new JButton("*");
+        c.gridx = 0;
+        c.gridy = 3;
+        c.insets = new Insets(5, 5, 5, 5);
+        panel.add(multiplyButton, c);
+
+        divideButton = new JButton("/");
+        c.gridx = 1;
+        c.gridy = 3;
+        c.insets = new Insets(5, 5, 5, 5);
+        panel.add(divideButton, c);
+
+        add(panel);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new AdvancedGUI();
+    }
+}
