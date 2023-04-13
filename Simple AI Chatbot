@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Chatbot {
+    private static String[] greetings = {"Hi", "Hello", "Hey"};
+    private static String[] responses = {"How can I help you?", "What can I do for you today?", "What's on your mind?"};
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome, how can I assist you today?");
+        String input = scanner.nextLine();
+        while (!input.equalsIgnoreCase("exit")) {
+            System.out.println(getResponse(input));
+            input = scanner.nextLine();
+        }
+    }
+    
+    public static String getResponse(String input) {
+        String response;
+        if (input.contains("hi") || input.contains("hello") || input.contains("hey")) {
+            response = greetings[(int) (Math.random() * greetings.length)];
+        } else {
+            response = responses[(int) (Math.random() * responses.length)];
+        }
+        return response;
+    }
+}
